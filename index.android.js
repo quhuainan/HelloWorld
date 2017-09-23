@@ -4,50 +4,60 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
+    AppRegistry,
+    StyleSheet,
+    Text,
+    TextInput,
+    Dimensions,
+    View
 } from 'react-native';
 
+let widthOfMargin = Dimensions.get('window').width * 0.05;
 export default class HelloWorld extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
-  }
+    render() {
+        return (
+            <View style={styles.container}>
+                <TextInput style={styles.textInputStyle}
+                           placeholder={'请输入手机号'}/>
+
+                <Text style={styles.textPromptStyle}>
+                    您输入的手机号：
+                </Text>
+                <TextInput style={styles.textInputStyle}
+                placeholder={'请输入密码'}
+                secureTextEntry={true}/>
+                <Text style={styles.bigTextPrompt} >
+                    确   定
+                </Text>
+
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    container: {
+        flex: 1,
+        backgroundColor: 'white',
+    },
+    textInputStyle: {
+        fontSize: 20,
+        backgroundColor: 'gray',
+        margin: widthOfMargin,
+    },
+    textPromptStyle: {
+        margin:widthOfMargin,
+        fontSize:20
+    },
+    bigTextPrompt:{
+        margin:widthOfMargin,
+        backgroundColor:'gray',
+        color:'white',
+        textAlign:'center',
+        fontSize:30
+    }
 });
 
 AppRegistry.registerComponent('HelloWorld', () => HelloWorld);
