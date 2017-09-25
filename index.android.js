@@ -14,67 +14,17 @@ import {
     View
 } from 'react-native';
 
-let widthOfMargin = Dimensions.get('window').width * 0.05;
 export default class HelloWorld extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            inputedNum: '',
-            inputedPW: '',
-
-        };
-        this.updatePW = this.updatePW.bind(this);
-    }
-
-    shouldComponentUpdate() {
-        if (this.state.inputedNum.length < 3) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    updateNum(newText) {
-        this.setState((state) => {
-            for (var aName in state) {
-                console.log(aName);
-                console.log(state[aName])
-            }
-            return {
-                inputedNum: newText,
-                aBrandnewStateVariable: 'I am a new variable.'
-            };
-        }, this.changeNumDone);
-    }
-
-    changeNumDone() {
-        console.log('React Native has changed inputed Num')
-    }
-
-    updatePW(newText) {
-        this.setState((state) => {
-            return {inputedPW: newText};
-        });
-    }
 
     render() {
         return (
             <View style={styles.container}>
-                <TextInput style={styles.textInputStyle}
-                           placeholder={'请输入手机号'}
-                           onChangeText={(newText) => this.updateNum(newText)}/>
-
-                <Text style={styles.textPromptStyle}>
-                    您输入的手机号：{this.state.inputedNum}
-                </Text>
-                <TextInput style={styles.textInputStyle}
-                           placeholder={'请输入密码'}
-                           onChangeText={this.updatePW}
-                           secureTextEntry={true}/>
-                <Text style={styles.bigTextPrompt}>
-                    确 定
-                </Text>
-
+                <View style={styles.firstRow}>
+                    <View style={styles.test1}/>
+                    <View style={styles.test2}/>
+                    <View style={styles.test3}/>
+                </View>
+                <View style={styles.testPosition}/>
             </View>
         );
     }
@@ -85,21 +35,39 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
     },
-    textInputStyle: {
-        fontSize: 20,
-        backgroundColor: 'gray',
-        margin: widthOfMargin,
+    firstRow: {
+        height: 80,
+        top: 40,
+        flexWrap:"wrap",
+        backgroundColor: "black",
+        flexDirection: "row",
+        //stretch 只能针对没有固定高度的控件才有用
+        alignItems: "center",
+        justifyContent:"space-around"
     },
-    textPromptStyle: {
-        margin: widthOfMargin,
-        fontSize: 20
+    test1: {
+        width: 68,
+        height: 28,
+        backgroundColor: "red"
     },
-    bigTextPrompt: {
-        margin: widthOfMargin,
-        backgroundColor: 'gray',
-        color: 'white',
-        textAlign: 'center',
-        fontSize: 30
+    test2: {
+        width: 40,
+        height: 12,
+        backgroundColor: "white"
+    },
+    test3: {
+        width: 100,
+        height: 56,
+        backgroundColor: "blue"
+    },
+
+    testPosition: {
+        backgroundColor: "grey",
+        height: 60,
+        width: 60,
+        position: "absolute",
+        top: 150,
+        right: 50
     }
 });
 
