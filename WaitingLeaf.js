@@ -1,7 +1,9 @@
+import  PropTypes from "prop-types";
 import React, {Component} from 'react'
 import {
     StyleSheet, Text, View
 } from 'react-native';
+
 
 export default class WaitingLeaf extends Component {
     constructor(props) {
@@ -28,7 +30,10 @@ export default class WaitingLeaf extends Component {
         this.props.onGobackPressed()
     }
 }
-
+WaitingLeaf.defaultProps = {
+    phoneNumber: "123456",
+    userPW: "3456678"
+}
 let styles = StyleSheet.create({
     container: {
         flex: 1,

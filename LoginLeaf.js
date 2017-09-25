@@ -13,6 +13,7 @@ import {
     Dimensions,
     View
 } from 'react-native';
+import * as Alert from "react-native/Libraries/Alert/Alert";
 
 let widthOfMargin = Dimensions.get('window').width * 0.05;
 export default class LoginLeft extends Component {
@@ -34,7 +35,9 @@ export default class LoginLeft extends Component {
         //HelloWorld.myStaticObject;
         // this.propertyOne="123"
     }
-
+    optionSelected(){
+        console.log('optionSelected.')
+    }
     render() {
         return (
             <View style={styles.container}>
@@ -53,7 +56,7 @@ export default class LoginLeft extends Component {
                     确 定
                 </Text>
 
-                <Text style={styles.bigTextPrompt} onPress={() => this.userPressAddressBook()}>
+                <Text style={styles.bigTextPrompt} onPress={ this.userPressAddressBook.bind(this)}>
                     通讯录
                 </Text>
             </View>
@@ -61,6 +64,15 @@ export default class LoginLeft extends Component {
     }
 
     userPressAddressBook() {
+        //Alert.alert("弹出框标题提示语","123");
+       // console.log('optionSelected.')
+        alert('这是一个标题',
+            '这是内容',
+            [
+                {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+                {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                {text: 'OK', onPress: () => console.log('OK Pressed')},
+            ])
 
     }
 
