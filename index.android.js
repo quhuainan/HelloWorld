@@ -6,29 +6,30 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View, TouchableNativeFeedback, TouchableHighlight
 } from 'react-native';
 
 export default class HelloWorld extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+          <TouchableNativeFeedback background={TouchableNativeFeedback.Ripple('white',false)}>
+              <View style={styles.button}/>
+          </TouchableNativeFeedback>
+
+        <TouchableHighlight onPress={this.onButtonPressed}>
+          <View style={styles.button}/>
+        </TouchableHighlight>
       </View>
     );
   }
+
+    onButtonPressed() {
+
+    }
 }
 
 const styles = StyleSheet.create({
@@ -38,10 +39,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  button: {
+    width: 300,
+    height: 70,
+    backgroundColor: "grey",
   },
   instructions: {
     textAlign: 'center',
